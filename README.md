@@ -1,2 +1,2 @@
 # CRUD
-Aplicación de tipo CRUD para relacionar Java con BBDD
+Ejercicio CRUD en JSP y MySQL sobre Motos.
