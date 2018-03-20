@@ -47,7 +47,7 @@
             	<option value="9">DUCATI</option>
             	<option value="10">SHERCO</option>
         </select>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Añadir Objeto
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="Formulario.jsp">Añadir Objeto</a>
         </p>
         
         <p><label>Modalidad:</label>

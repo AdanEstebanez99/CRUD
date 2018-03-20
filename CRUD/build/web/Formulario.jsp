@@ -30,9 +30,17 @@
     </div>
     
     <div id="main">
-      <div id="panel">
-        <h3>Panel de Administración</h3>
         <form method="post" action="">
+        <h2>Registro de producto nuevo:</h2>
+        <p><label>Nombre del Producto:</label>
+        <input type="text" name="Nombre" maxlength="40"></p>
+        
+        <p><label>Color del Producto:</label>
+        <input type="text" name="Color" maxlength="15"></p>
+        
+        <p><label>Cilindrada (Solo numeros, Ej: 125):</label>
+	<input type="text" name="Cilindrada" maxlength="4"></p>
+        
         <p><label>Marca:</label>
         <select>
             	<option value="0">--Elige Marca</option>
@@ -47,7 +55,6 @@
             	<option value="9">DUCATI</option>
             	<option value="10">SHERCO</option>
         </select>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="Formulario.jsp">Añadir Objeto</a>
         </p>
         
         <p><label>Modalidad:</label>
@@ -60,39 +67,12 @@
             	<option value="5">TRIAL</option>
                 <option value="6">MOTOCROSS</option>
         </select>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Eliminar Objeto
         </p>
+        
+        <p><label>URL de la imagen del producto:</label>
+        <input type="text" name="URL" maxlength="255"></p>
         </form>
-      </div>
       
-            
-            
-<!--<div class="gallery">
-  <a href="img_fjords.jpg">
-    <img src='imagenes/pilotos/ryan-dungey-5.jpg'>
-  </a>
-  <div class="desc">Prueba</div>
-</div>-->
-            
-      <div id="container">
-          <% Class.forName("com.mysql.jdbc.Driver");
-              Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/motos", "root","");
-              Statement s = conexion.createStatement();
-              ResultSet listado = s.executeQuery("SELECT * FROM producto");
-              while (listado.next()) {
-                  out.println();
-//                          "<li>" + listado.getString("ID_MAR") + " " + listado.getString("ID_MOD") + " " + listado.getString("NomPro") + " " + listado.getString("ColPro") + " " + listado.getString("CilPro") + "</li>" 
-                         out.println("<div class=\"gallery\">"+
-                            "<a href = \"img_fjords.jpg\">"+
-                            "<img src =" + listado.getString("IMG_PRO") + ">"+
-                            "</a> <div>"+
-                            "<class='\"desc\">" + listado.getString("NomPro") + "</div> </div>");
-                }
-            conexion.close();
-          %>      
-          
-          
-      </div>
     </div>
 
     <div id="footer">
@@ -100,6 +80,8 @@
     Aplicación Crud Programación 2018</br>
     </div>
   </div>
+    
+  <img id="imagenForm" src="imagenes/moto1.png">
 
 </body>
 </html>
