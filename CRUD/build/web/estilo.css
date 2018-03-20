@@ -64,6 +64,12 @@
                text-align: justify;
                color: black;
                font-family: 'Exo 2', sans-serif;}
+      
+      #panel {border: 2px solid black;
+              padding-left: 15px;
+              margin-left: 20px;
+              width: 450px;
+              background-color: rgb(245,245,245)}
 
       #imagenIndex {float: right;
                     margin-top: -85px;
@@ -79,53 +85,15 @@
                  margin-top: 10px;
                  margin-bottom: 25px;}
 
-      #video1 {padding: 10px;}
-
-      #video2 {padding: 10px;}
-
       #tablaLogos {margin-left: 7px;
                    margin-top: 20px;
                    margin-bottom: 15px;}
-
-
-      #clasificacion {border: 3px solid black;
-                      background-color: rgb(255,91,91);
-                      padding: 2px;
-                      margin-left: 260px;
-                      margin-bottom: 30px;}
-
-      #clasificacion td {border: 2px solid black;
-                         padding: 10px;
-                         background-color: rgb(245,245,245);
-                         padding-left: 20px;
-                         padding-right: 20px;}
 
       #titulo2 {color: black;
                 text-align: center;
                 font-size: 1.6em;
                 padding: 10px;
                 font-family: 'Anton', sans-serif;}
-
-      #calendario {border: 3px solid black;
-                   background-color: rgb(255,91,91);
-                   padding: 2px;
-                   margin-left: 330px;
-                   margin-bottom: 30px;}
-
-      #calendario td {border: 2px solid black;
-                      padding: 10px;
-                      background-color: rgb(245,245,245);
-                      padding-left: 20px;
-                      padding-right: 20px;}
-
-      #pilotos {border: 3px solid black;
-                background-color: rgb(255,91,91);
-                padding: 2px;
-                margin-bottom: 30px;
-                margin-left: 25px;}
-
-      #pilotos td {border: 2px solid black;
-                   background-color: rgb(245,245,245);}
 
       #contactoMapa {width: 560px;
                      margin-left: 10px;
@@ -139,7 +107,7 @@
       #nav a {color:black;
               text-decoration: none;}
 
-     #nav a:hover {color: white;}
+      #nav a:hover {color: white;}
      
 
      

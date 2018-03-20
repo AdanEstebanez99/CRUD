@@ -21,7 +21,7 @@
     
     <div id="header"> <div id="login">Entra  Registrate</div> 
                       <div id="titulo">Racing Bikes
-                      <div id="Subtitulo">Tu tienda de motos en MÃ¡laga</div>
+                      <div id="Subtitulo">Tu tienda de motos en Málaga</div>
                       </div>
     </div>
     
@@ -30,10 +30,40 @@
     </div>
     
     <div id="main">
-      <div id="panel"></div>
-        <h3>Panel de AdministraciÃ³n</h3>
-        <p>Marca</p>
-        <p>Modalidad</p>
+      <div id="panel">
+        <h3>Panel de Administración</h3>
+        <form method="post" action="">
+        <p><label>Marca:</label>
+        <select>
+            	<option value="0">--Elige Marca</option>
+            	<option value="1">GAS GAS</option>
+            	<option value="2">HONDA</option>
+            	<option value="3">YAMAHA</option>
+                <option value="4">SUZUKI</option>
+            	<option value="5">KTM</option>
+            	<option value="6">HUSQVARNA</option>
+                <option value="7">KAWASAKI</option>
+                <option value="8">BMW</option>
+            	<option value="9">DUCATI</option>
+            	<option value="10">SHERCO</option>
+        </select>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Añadir Objeto
+        </p>
+        
+        <p><label>Modalidad:</label>
+        <select>
+            	<option value="0">--Elige Modalidad</option>
+            	<option value="1">SCOOTER</option>
+            	<option value="2">NAKED</option>
+            	<option value="3">SPORT</option>
+                <option value="4">SUPER SPORT</option>
+            	<option value="5">TRIAL</option>
+                <option value="6">MOTOCROSS</option>
+        </select>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Eliminar Objeto
+        </p>
+        </form>
+      </div>
       
             
             
@@ -56,7 +86,7 @@
                             "<a href = \"img_fjords.jpg\">"+
                             "<img src =" + listado.getString("IMG_PRO") + ">"+
                             "</a> <div>"+
-                            "<class='\"desc\">Prueba</div> </div>");
+                            "<class='\"desc\">" + listado.getString("NomPro") + "</div> </div>");
                 }
             conexion.close();
           %>      
@@ -66,8 +96,8 @@
     </div>
 
     <div id="footer">
-    PÃ¡gina creada por: AdÃ¡n Estebanez Villarrubia</br>
-    AplicaciÃ³n Crud Programacion 2018</br>
+    Página creada por: Adán Estebanez Villarrubia</br>
+    Aplicación Crud Programación 2018</br>
     </div>
   </div>
 
