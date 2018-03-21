@@ -25,7 +25,7 @@ de datos o eliminarlos.
 En añadir productos aparecerá un formulario donde rellenando los campos podras añadir
 un nuevo producto a la base de datos.
 
-<img src="capturas/captura03.png" width="240px" height="400px">
+<img src="/capturas/captura03.png" width="240px" height="400px">
 
 
 
