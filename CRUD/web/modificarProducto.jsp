@@ -20,6 +20,5 @@
             
             + " WHERE ID_PROD = " + request.getParameter("ID") + "";
     s.execute(consulta);  
-//    out.println(consulta);
     out.println("<script>document.location = \"Productos.jsp\"</script>");
 %>

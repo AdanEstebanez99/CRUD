@@ -71,29 +71,19 @@
         </p>
         </form>
       </div>
-      
-            
-            
-<!--<div class="gallery">
-  <a href="img_fjords.jpg">
-    <img src='imagenes/pilotos/ryan-dungey-5.jpg'>
-  </a>
-  <div class="desc">Prueba</div>
-</div>-->
             
       <div id="container">
           <% Class.forName("com.mysql.jdbc.Driver");
               Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/motos", "root","");
               Statement s = conexion.createStatement();
               ResultSet listado = s.executeQuery("SELECT * FROM producto");
-              while (listado.next()) {
-                  out.println();
-//                          "<li>" + listado.getString("ID_MAR") + " " + listado.getString("ID_MOD") + " " + listado.getString("NomPro") + " " + listado.getString("ColPro") + " " + listado.getString("CilPro") + "</li>" 
-                         out.println("<div class=\"gallery\">"+
-                            "<a href = \"formularioModificacion.jsp?ID=" + listado.getString("ID_PROD") + "\">" +
-                            "<img src =" + listado.getString("IMG_PRO") + ">"+
-                            "</a> <div>"+
-                            "<class='\"desc\">" + listado.getString("NomPro") + "</div> </div>");
+                while (listado.next()) {
+                    out.println();
+                        out.println("<div class=\"gallery\">"+
+                        "<a href = \"formularioModificacion.jsp?ID=" + listado.getString("ID_PROD") + "\">" +
+                        "<img src =" + listado.getString("IMG_PRO") + ">"+
+                        "</a> <div>"+
+                        "<class='\"desc\">" + listado.getString("NomPro") + "</div> </div>");
                 }
             conexion.close();
           %>      
