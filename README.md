@@ -18,7 +18,7 @@ acompañada de un panel de administracion en el cual podras elegir mostrar los
 productos clasificados por marcas o modalidad, añadir nuevos productos a la base
 de datos o eliminarlos.
 
-<img src="capturas/captura02.png" height="400px">
+<img src="capturas/captura02.png" width="985px" height="400px">
 
 ## AÑADIR PRODUCTOS
 
