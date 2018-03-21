@@ -42,6 +42,24 @@ modificar y aparecerá un formulario para que modifiques los campos que desees.
 
 <img src="/capturas/captura05.PNG">
 
+## ELEMENTOS A AÑADIR EN EL FUTURO
+
+En el futuro añadiré la función de filtro ya presentada en el *"panel de administracion"* dentro de 
+la ventana de *"Productos"* que lo que va a hacer es mostrar solo los productos de la la *"marca / modelo"*
+que se haya seleccionado.
+
+<img src="/capturas/captura06.PNG">
+
+También añadiré un *"acceso a usuario"* ya planteado pero sin función niguna de momento.
+
+<img src="/capturas/captura07.PNG">
+
+## BASE DE DATOS
+
+Este es el esquema de la base de datos implementada en la web llamada *"motos"*:
+
+<img src="/capturas/captura08.PNG">
+
 
 
 
