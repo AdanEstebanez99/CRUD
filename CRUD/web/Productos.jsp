@@ -14,12 +14,12 @@
    <link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet"> 
    <link href="imagenes/favicon.png" rel="shortcut icon"/>
    <link href="estilo.css" rel="stylesheet"/>
-   
-   <script>
-        function eliminar (mensaje) {
-        alert(mensaje);}
-   </script>
 
+   <script>          
+       function eliminar (mensaje) {          
+           alert(mensaje);
+       }     
+    </script>
 </head>
 <body>
 	<div id="wrapper">
@@ -52,7 +52,7 @@
             	<option value="9">DUCATI</option>
             	<option value="10">SHERCO</option>
         </select>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="Formulario.jsp">Añadir Objeto</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="Formulario.jsp">Añadir Producto</a>
         </p>
         
         <p><label>Modalidad:</label>
@@ -65,10 +65,21 @@
             	<option value="5">TRIAL</option>
                 <option value="6">MOTOCROSS</option>
         </select>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a span onclick="eliminar('Para eliminar algun producto debes hacer click sobre la imagen del producto!')">Eliminar Objeto</span></a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="formularioEliminar.jsp">Borrar Producto</a>
+                
+        </a>
         </p>
         </form>
       </div>
+      
+            
+            
+<!--<div class="gallery">
+  <a href="img_fjords.jpg">
+    <img src='imagenes/pilotos/ryan-dungey-5.jpg'>
+  </a>
+  <div class="desc">Prueba</div>
+</div>-->
             
       <div id="container">
           <% Class.forName("com.mysql.jdbc.Driver");
@@ -77,14 +88,16 @@
               ResultSet listado = s.executeQuery("SELECT * FROM producto");
               while (listado.next()) {
                   out.println();
+//                          "<li>" + listado.getString("ID_MAR") + " " + listado.getString("ID_MOD") + " " + listado.getString("NomPro") + " " + listado.getString("ColPro") + " " + listado.getString("CilPro") + "</li>" 
                          out.println("<div class=\"gallery\">"+
-                            "<a href = \"img_fjords.jpg\">"+
+                            "<a href = \"formularioModificacion.jsp?ID=" + listado.getString("ID_PROD") + "\">" +
                             "<img src =" + listado.getString("IMG_PRO") + ">"+
                             "</a> <div>"+
                             "<class='\"desc\">" + listado.getString("NomPro") + "</div> </div>");
                 }
             conexion.close();
           %>      
+          
           
       </div>
     </div>
