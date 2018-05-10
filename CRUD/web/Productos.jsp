@@ -1,3 +1,5 @@
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.Statement"%> 
 <%@page import="java.sql.ResultSet"%> 
 <%@page import="java.sql.DriverManager"%> 
@@ -77,14 +79,32 @@
               Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/motos", "root","");
               Statement s = conexion.createStatement();
               ResultSet listado = s.executeQuery("SELECT * FROM producto");
-                while (listado.next()) {
-                    out.println();
-                        out.println("<div class=\"gallery\">"+
-                        "<a href = \"formularioModificacion.jsp?ID=" + listado.getString("ID_PROD") + "\">" +
-                        "<img src =" + listado.getString("IMG_PRO") + ">"+
-                        "</a> <div>"+
-                        "<class='\"desc\">" + listado.getString("NomPro") + "</div> </div>");
+              
+              HashMap<String ,String> infoMoto;
+              
+              ArrayList< HashMap <String ,String>> moto = new ArrayList< HashMap <String ,String>>();
+                
+                
+               while (listado.next()) {
+                   
+                   infoMoto = new HashMap<String ,String>();
+                   infoMoto.put("ID_PROD", listado.getString("ID_PROD"));
+                   infoMoto.put("NomPro", listado.getString("NomPro"));
+                   infoMoto.put("IMG_PRO", listado.getString("IMG_PRO"));
+                   
+                   moto.add(infoMoto);
+
                 }
+              
+                for (HashMap <String ,String> contador: moto){
+                    out.println();
+                    out.println("<div class=\"gallery\">"+
+                    "<a href = \"formularioModificacion.jsp?ID=" + contador.get("ID_PROD") + "\">" +
+                    "<img src =" + contador.get("IMG_PRO") + ">"+
+                    "</a> <div>"+
+                    "<class='\"desc\">" + contador.get("NomPro") + "</div> </div>");
+                }
+                
             conexion.close();
           %>      
           
