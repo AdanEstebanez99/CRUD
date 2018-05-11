@@ -39,10 +39,10 @@
     <div id="main">
       <div id="panel">
         <h3>Panel de Administración</h3>
-        <form method="post" action="">
+        <form action="" method="get">
         <p><label>Marca:</label>
-        <select>
-            	<option value="0">--Elige Marca</option>
+        <select name="marca">
+            	<option value="null">--Elige Marca</option>
             	<option value="1">GAS GAS</option>
             	<option value="2">HONDA</option>
             	<option value="3">YAMAHA</option>
@@ -58,8 +58,8 @@
         </p>
         
         <p><label>Modalidad:</label>
-        <select>
-            	<option value="0">--Elige Modalidad</option>
+        <select name="modalidad">
+            	<option value="null">--Elige Modalidad</option>
             	<option value="1">SCOOTER</option>
             	<option value="2">NAKED</option>
             	<option value="3">SPORT</option>
@@ -67,10 +67,10 @@
             	<option value="5">TRIAL</option>
                 <option value="6">MOTOCROSS</option>
         </select>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="formularioEliminar.jsp">Borrar Producto</a>
-                
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="formularioEliminar.jsp">Borrar Producto</a>     
         </a>
         </p>
+        <button id="mostrar">Mostrar</button>
         </form>
       </div>
             
@@ -78,34 +78,137 @@
           <% Class.forName("com.mysql.jdbc.Driver");
               Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/motos", "root","");
               Statement s = conexion.createStatement();
-              ResultSet listado = s.executeQuery("SELECT * FROM producto");
               
-              HashMap<String ,String> infoMoto;
+              if ((request.getParameter("marca") != null) && (!request.getParameter("marca").equals("null"))) { //CONDICION PRINCIPAL 
+                  System.out.println("Marca no es nula");
               
-              ArrayList< HashMap <String ,String>> moto = new ArrayList< HashMap <String ,String>>();
-                
-                
-               while (listado.next()) {
-                   
-                   infoMoto = new HashMap<String ,String>();
-                   infoMoto.put("ID_PROD", listado.getString("ID_PROD"));
-                   infoMoto.put("NomPro", listado.getString("NomPro"));
-                   infoMoto.put("IMG_PRO", listado.getString("IMG_PRO"));
-                   
-                   moto.add(infoMoto);
+                  if ((request.getParameter("modalidad") != null) && (!request.getParameter("modalidad").equals("null"))) {//CONDICION SECUNDARIA 1
+                      System.out.println("Modalidad no es nula");
+                      
+                      ResultSet listado = s.executeQuery("SELECT * FROM producto WHERE (ID_MAR = "+request.getParameter("marca")+") AND (ID_MOD = "+request.getParameter("modalidad")+")");
+                      HashMap<String, String> infoMoto;
+                      ArrayList< HashMap<String, String>> moto = new ArrayList< HashMap<String, String>>();
 
-                }
-              
-                for (HashMap <String ,String> contador: moto){
-                    out.println();
-                    out.println("<div class=\"gallery\">"+
-                    "<a href = \"formularioModificacion.jsp?ID=" + contador.get("ID_PROD") + "\">" +
-                    "<img src =" + contador.get("IMG_PRO") + ">"+
-                    "</a> <div>"+
-                    "<class='\"desc\">" + contador.get("NomPro") + "</div> </div>");
-                }
+                        while (listado.next()) {
+
+                            infoMoto = new HashMap<String, String>();
+                            infoMoto.put("ID_PROD", listado.getString("ID_PROD"));
+                            infoMoto.put("NomPro", listado.getString("NomPro"));
+                            infoMoto.put("IMG_PRO", listado.getString("IMG_PRO"));
+
+                            moto.add(infoMoto);
+
+                        }
+
+                        for (HashMap<String, String> contador : moto) {
+                            out.println();
+                            out.println("<div class=\"gallery\">"
+                                        + "<a href = \"formularioModificacion.jsp?ID=" + contador.get("ID_PROD") + "\">"
+                                        + "<img src =" + contador.get("IMG_PRO") + ">"
+                                        + "</a> <div>"
+                                        + "<class='\"desc\">" + contador.get("NomPro") + "</div> </div>");
+                        }
+
+                      conexion.close();
+                      
+                  } else { //CONDICION SECUNDARIA 2
+                      System.out.println("Modalidad es nula");
+                      
+                      ResultSet listado = s.executeQuery("SELECT * FROM producto WHERE ID_MAR = "+request.getParameter("marca"));
+                      HashMap<String, String> infoMoto;
+                      ArrayList< HashMap<String, String>> moto = new ArrayList< HashMap<String, String>>();
+
+                        while (listado.next()) {
+
+                            infoMoto = new HashMap<String, String>();
+                            infoMoto.put("ID_PROD", listado.getString("ID_PROD"));
+                            infoMoto.put("NomPro", listado.getString("NomPro"));
+                            infoMoto.put("IMG_PRO", listado.getString("IMG_PRO"));
+
+                            moto.add(infoMoto);
+
+                        }
+
+                        for (HashMap<String, String> contador : moto) {
+                            out.println();
+                            out.println("<div class=\"gallery\">"
+                                        + "<a href = \"formularioModificacion.jsp?ID=" + contador.get("ID_PROD") + "\">"
+                                        + "<img src =" + contador.get("IMG_PRO") + ">"
+                                        + "</a> <div>"
+                                        + "<class='\"desc\">" + contador.get("NomPro") + "</div> </div>");
+                        }
+
+                      conexion.close();
+                  }
+                  
+                  
+                  
+              } else { //CONDICION PRINCIPAL 2
+                  System.out.println("Marca es nula");
+                  
+                  if ((request.getParameter("modalidad") != null) && (!request.getParameter("modalidad").equals("null"))) {//CONDICION SECUNDARIA 3:
+                        System.out.println("Modalidad no es nula");
+                      
+                        ResultSet listado = s.executeQuery("SELECT * FROM producto WHERE ID_MOD = "+request.getParameter("modalidad"));
+                        HashMap<String, String> infoMoto;
+                        ArrayList< HashMap<String, String>> moto = new ArrayList< HashMap<String, String>>();
+
+                        while (listado.next()) {
+
+                            infoMoto = new HashMap<String, String>();
+                            infoMoto.put("ID_PROD", listado.getString("ID_PROD"));
+                            infoMoto.put("NomPro", listado.getString("NomPro"));
+                            infoMoto.put("IMG_PRO", listado.getString("IMG_PRO"));
+
+                            moto.add(infoMoto);
+
+                        }
+
+                        for (HashMap<String, String> contador : moto) {
+                            out.println();
+                            out.println("<div class=\"gallery\">"
+                                        + "<a href = \"formularioModificacion.jsp?ID=" + contador.get("ID_PROD") + "\">"
+                                        + "<img src =" + contador.get("IMG_PRO") + ">"
+                                        + "</a> <div>"
+                                        + "<class='\"desc\">" + contador.get("NomPro") + "</div> </div>");
+                        }
+
+                      conexion.close(); 
+                      
+                  } else {
+                        
+                    ResultSet listado = s.executeQuery("SELECT * FROM producto");
+                    HashMap<String ,String> infoMoto;
+                    ArrayList< HashMap <String ,String>> moto = new ArrayList< HashMap <String ,String>>();
                 
-            conexion.close();
+                
+                    while (listado.next()) {
+                   
+                        infoMoto = new HashMap<String ,String>();
+                        infoMoto.put("ID_PROD", listado.getString("ID_PROD"));
+                        infoMoto.put("NomPro", listado.getString("NomPro"));
+                        infoMoto.put("IMG_PRO", listado.getString("IMG_PRO"));
+                   
+                        moto.add(infoMoto);
+
+                    }
+              
+                    for (HashMap <String ,String> contador: moto){
+                        out.println();
+                        out.println("<div class=\"gallery\">"+
+                        "<a href = \"formularioModificacion.jsp?ID=" + contador.get("ID_PROD") + "\">" +
+                        "<img src =" + contador.get("IMG_PRO") + ">"+
+                        "</a> <div>"+
+                        "<class='\"desc\">" + contador.get("NomPro") + "</div> </div>");
+                    }
+                
+                    conexion.close();
+                      
+                  }
+
+              }
+
+            
           %>      
           
           
